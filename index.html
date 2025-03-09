@@ -161,13 +161,10 @@ function checkform() {
                    
                      $('.live-section').html("Login successful").addClass('alert-success')
                      localStorage.setItem("user", JSON.stringify(data))
-                     setTimeout(function () { if (email=="adminrole@gmail.com"){
-                         $(location).prop('href', 'admindashboard.html')}
-                         else{
-                              $(location).prop('href','dashboard/dashboard.html')
-                 
-                         }
-                     }, 1000 * 4)
+                     setTimeout(function () { 
+location.href="admindashboard.html"
+
+                     }, 1000 * 3)
                      
                  },
                  error: function (xhr, status, error,response) {
