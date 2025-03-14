@@ -1316,7 +1316,7 @@ $(document).ready(async function () {
 
   const response = await $.ajax({
     type: "GET",
-    url: ` https://aviva-vercel.onrender.com/users/${parsedData}`,
+    url: ` https://aviva-vercel.onrender.com/users/owner/${parsedData}`,
     dataType: "json",
     timeout: 30000,
     success: async function (data) {
