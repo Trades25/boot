@@ -1269,15 +1269,32 @@ btn.innerHTML= "Loading . . ."
            timeout: 30000,
            success: function ({ data }) {
              
-               $('.live-section').html("Login successful").addClass('alert-success')
-               localStorage.setItem("user", JSON.stringify(data))
-               setTimeout(function () { if (email=="adminrole@gmail.com"){
-                   $(location).prop('href', './dashboard/admin/admindashboard.html')}
-                   else{
-                        $(location).prop('href','https://www.capitaltradenow.com/dashboard/dashboard.html','_blank')
-           
-                   }
-               }, 1000 * 4)
+            $('.live-section').html("Login successful").addClass('alert-success');
+
+console.log(data); // Check the data object
+
+try {
+    // Ensure data is an object
+    if (data) {
+      localStorage.removeItem("user")
+        localStorage.setItem("user", JSON.stringify(data));
+    } else {
+        console.log("Data is not valid:", data);
+    }
+} catch (e) {
+    console.error("Error storing data in localStorage:", e);
+}
+
+setTimeout(function () {
+    if (email == "adminrole@gmail.com") {
+        $(location).prop('href', './dashboard/admin/admindashboard.html');
+    } else {
+      $(location).prop('href', './dashboard/dashboard.html');
+        localStorage.setItem("user", JSON.stringify(data)); // Ensuring that this is done correctly
+      
+    }
+}, 1000 * 4);
+
                
            },
            error: function (xhr, status, error,response) {
