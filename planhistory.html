@@ -9678,7 +9678,7 @@ console.log(planId)
 const copysub=localStorage.getItem("copysub")
 const response = await $.ajax({
 type: "PUT",
-url: `https://aviva-render-2slr.onrender.com/transactions/${_id}/planhistory/${planId}/confirm`,
+url: `https://aviva-render2.onrender.com/transactions/${_id}/planhistory/${planId}/confirm`,
 dataType: "json",
 data:{_id,planId,copysub},
 timeout: 30000,
@@ -9710,7 +9710,7 @@ decline.innerHTML="Processing"
     
 const response = await $.ajax({
 type: "PUT",
-url: `https://aviva-render-2slr.onrender.com/transactions/${_id}/planhistory/${planId}/decline`,
+url: `https://aviva-render2.onrender.com/transactions/${_id}/planhistory/${planId}/decline`,
 dataType: "json",
 data:{_id,planId},
 timeout: 30000,

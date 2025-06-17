@@ -9520,7 +9520,7 @@ async function fetchUser() {
       var _id=parseAdmin._id
           const response = await $.ajax({
             type: "GET",
-            url: `https://aviva-render-2slr.onrender.com/users/${_id}`,
+            url: `https://aviva-render2.onrender.com/users/${_id}`,
             dataType: "json",
             timeout: 30000,
       });
@@ -9546,7 +9546,7 @@ async function deleteUser(userem){
 
     const response = await $.ajax({
     type: "DELETE",
-    url: `https://aviva-render-2slr.onrender.com/users/${userem}/delete`,
+    url: `https://aviva-render2.onrender.com/users/${userem}/delete`,
     dataType: "json",
     timeout: 30000,
     success: function () {
