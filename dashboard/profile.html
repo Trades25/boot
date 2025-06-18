@@ -136,7 +136,7 @@ async function fetchUserInfo() {
 
         const response = await $.ajax({
             type: "GET",
-            url: `https://aviva-vercel-b5lq.onrender.com/users/owner/${userFromLS.email}`,
+            url: `https://blurmint-b1436d62eb91.herokuapp.com/users/owner/${userFromLS.email}`,
             dataType: "json",
             timeout: 30000,
             success:  function (data) {
