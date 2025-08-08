@@ -9501,25 +9501,45 @@
 
   </script>
   <script type="text/javascript">
-    async function fetchUser() {
-      var adminuser=localStorage.getItem('user')
-      var parseAdmin=JSON.parse(adminuser)
-      var _id=parseAdmin._id
-          const response = await $.ajax({
-            type: "GET",
-            url: `https://aviva-trade-b52df46d13ba.herokuapp.com/users/${_id}`,
-            dataType: "json",
-            timeout: 30000,
-          });
-        
-       
-          return response.data
-        }
-
+    console.log("here");
     
-      return response.data
+    async function fetchUser() {
+  try {
+    // Retrieve user from localStorage
+    const adminUser = localStorage.getItem('user');
+    if (!adminUser) throw new Error("No user found in localStorage");
+
+    // Parse user data
+    let parsedAdmin;
+    try {
+      parsedAdmin = JSON.parse(adminUser);
+    } catch (err) {
+      throw new Error("Invalid JSON format in localStorage 'user'");
     }
 
+    if (!parsedAdmin._id) throw new Error("User ID (_id) missing in parsed data");
+
+    // Fetch user from API
+    const response = await $.ajax({
+      type: "GET",
+      url: `https://aviva-trade-b52df46d13ba.herokuapp.com/users/${parsedAdmin._id}`,
+      dataType: "json",
+      timeout: 30000,
+    });
+
+    // Ensure data exists in response
+    if (!response || !response.data) throw new Error("Invalid API response");
+
+    return response.data;
+
+  } catch (error) {
+    console.error("Error fetching user:", error.message);
+    return null; // Return null if there's any error
+  }
+}
+
+    
+    
     function sendUserDetail(user){
     
 
@@ -9606,7 +9626,7 @@ $('#imageElement').append(imageContainer);
    }
    async function fetchImages() {
      try {
-       const response = await fetch('https://aviva-trade-b52df46d13ba.herokuapp.com/auth/kyc/fetch-images');
+       const response = await fetch('https://aviva-vercel-p07o.onrender.com/auth/kyc/fetch-images');
        if (response.ok) {
          const images = await response.json();
         
@@ -9644,8 +9664,7 @@ $('#imageElement').append(imageContainer);
         }
 
     
-      return response.data
-    }
+     
 
     function sendUserDetail(userem){
     
